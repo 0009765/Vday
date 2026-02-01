@@ -2,104 +2,100 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy 2nd Valentine, Muduuuuuuuuuu! ❤️</title>
+<title>Happy 2nd Valentine! ❤️</title>
+
 <style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background: radial-gradient(circle at top, #ff9a9e, #ff2d55);
-    font-family: 'Arial', sans-serif;
-    color: white;
-    overflow: hidden;
-  }
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #ff9a9e, #ff2d55);
+  font-family: Arial, sans-serif;
+  color: white;
+  overflow: hidden;
+}
 
-  .card {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.35);
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-    width: 400px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    z-index: 10;
-  }
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.35);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  width: 400px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  z-index: 10;
+}
 
-  h1 { margin-bottom: 15px; font-size: 28px; }
-  p { min-height: 60px; font-size: 20px; font-style: italic; color: #ffe4e1; line-height: 1.5; }
+h1 { margin-bottom: 15px; font-size: 28px; }
+p { min-height: 60px; font-size: 20px; font-style: italic; color: #ffe4e1; line-height: 1.5; }
 
-  button {
-    padding: 12px 28px;
-    font-size: 16px;
-    border: none;
-    border-radius: 25px;
-    margin: 10px;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
+button {
+  padding: 12px 28px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+button:hover { transform: scale(1.05); }
 
-  button:hover { transform: scale(1.05); }
+.yes { background: #ff2d55; color: white; }
+.no  { background: white; color: #ff2d55; }
 
-  .yes { background: #ff2d55; color: white; }
-  .no  { background: white; color: #ff2d55; }
+.heart {
+  position: absolute;
+  color: red;
+  font-size: 20px;
+  pointer-events: none;
+  animation: float linear infinite, sway ease-in-out infinite alternate;
+  opacity: 0.8;
+}
 
-  .heart {
-    position: absolute;
-    color: red;
-    font-size: 20px;
-    pointer-events: none;
-    animation: float linear infinite, sway ease-in-out infinite alternate;
-    opacity: 0.8;
-  }
+@keyframes float {
+  from { transform: translateY(100vh); opacity: 1; }
+  to { transform: translateY(-10vh); opacity: 0; }
+}
 
-  @keyframes float {
-    from { transform: translateY(100vh); opacity: 1; }
-    to { transform: translateY(-10vh); opacity: 0; }
-  }
+@keyframes sway {
+  from { transform: translateX(0); }
+  to { transform: translateX(20px); }
+}
 
-  @keyframes sway {
-    from { transform: translateX(0); }
-    to { transform: translateX(20px); }
-  }
-
-  #confetti {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
+#confetti {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
 
 <div class="card" id="card">
-  <h1 id="title">Babuuuuu❤️</h1>
+  <h1>Babuuuuu❤️</h1>
   <p id="text"></p>
-  <button id="nextBtn">Click Maaduuuuuuuuuu ➡️</button>
+  <button id="nextBtn">Click Maadu ➡️</button>
 </div>
 
 <canvas id="confetti"></canvas>
 
 <script>
-const card = document.getElementById("card");
 const textEl = document.getElementById("text");
 const nextBtn = document.getElementById("nextBtn");
 
-// Messages with emojis
 const messages = [
   "Happy 2nd Valentine's Day, Muduuuuuuuu",
-  " Two years agidhe, and I want you as my Valentine for my whole life ",
-  "I know I'm not perfect, but I'm trying my best to be for you.. ",
-  "Because of you, I'm learning to be a perfect boyfriend and, of course, will be a perfect husband for you (pakka wala promise) ",
-  "I want to see you as my partner, my best friend, my Girlfriend, and my wifeeeeeeee ",
-  "Will you be my Valentine?????????????????… "
+  " It will be our 2nd Valentine and neither of us thought we will be together, may be its destiny written ..",
+  "I even know tat im not perfect enough but im glad u choose me every single time ....",
+  "Waiting for tat moment, when u be called as pashiiiiiii's wifeeee😘, i even know its not easy to make it but babu lets choose each other no matter wts the situation and make it work plssssssss",
+  "So babu!!!!!!!!!!!!!!!!!💘"
 ];
 
 let index = 0;
 
-// Typing effect
 function typeText(text, callback) {
   textEl.innerHTML = "";
   let i = 0;
@@ -120,22 +116,24 @@ nextBtn.addEventListener("click", () => {
   if(index < messages.length){
     typeText(messages[index]);
   } else {
-    finalQuestion();
+    showFinalQuestion();
   }
 });
 
-function finalQuestion() {
+function showFinalQuestion() {
+  const card = document.getElementById("card");
   card.innerHTML = `
-    <h1>Will you be my Valentine babyyyyyy? 💖</h1>
+    <h1>Will you be my Valentine, babyyyyyy? 💖</h1>
     <button class="yes" onclick="yes()">Yes 😍</button>
     <button class="no" onclick="no()">No 🙈</button>
   `;
 }
 
 function no() {
+  const card = document.getElementById("card");
   card.innerHTML = `
     <h1>😏</h1>
-    <p>Hu bandbiduuuuu!!!! Sumne yes anta helu ...💕</p>
+    <p>Hu Bandbiduuuuuuuuuuuuuuuuu!!! sumne yes click maadu</p>
   `;
   setTimeout(() => {
     card.innerHTML = `
@@ -146,14 +144,14 @@ function no() {
 }
 
 function yes() {
+  const card = document.getElementById("card");
   card.innerHTML = `
-    <h1>YAYYYY ❤️🥰</h1>
+    <h1>i knew it❤️🥰</h1>
     <p>Happy 2nd Valentine's, Muduuuuuuuuuu! I love you more every day 💘💖</p>
   `;
   startConfetti();
 }
 
-// Floating red hearts
 setInterval(() => {
   const heart = document.createElement("div");
   heart.className = "heart";
@@ -166,7 +164,6 @@ setInterval(() => {
   setTimeout(() => heart.remove(), 10000);
 }, 200);
 
-// Confetti
 const confettiCanvas = document.getElementById("confetti");
 const ctx = confettiCanvas.getContext("2d");
 confettiCanvas.width = window.innerWidth;
@@ -201,7 +198,4 @@ function drawConfetti() {
 
 </body>
 </html>
-
-
-
-
+	
