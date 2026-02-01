@@ -114,29 +114,14 @@ function typeText(text, callback) {
 typeText(messages[0]);
 
 nextBtn.addEventListener("click", () => {
-  clickCount++;
-
-  if(clickCount === 1) {
-    typeText("One kiss for one click... Ready? 😘", addHearts);
-  } 
-  else if(clickCount === 2) {
-    typeText("1 kissing done! Want more? Click next 😍", addHearts);
-  } 
-  else if(clickCount === 3) {
-    typeText("2 kisses done! Stoppp? 😏 Or keep going for more kisses 💋", addHearts);
-  } 
-  else if(clickCount === 4) {
-    typeText("Stoppp! 😘 You need more kisses, babu 💖💋", addHearts);
-  } 
-  else {
-    if(index < messages.length) {
-      typeText(messages[index], addHearts);
-      index++;
-    } else {
-      showFinalQuestion();
-    }
+  index++;
+  if(index < messages.length){
+    typeText(messages[index]);
+  } else {
+    showFinalQuestion();
   }
 });
+
 
 function showFinalQuestion() {
   const card = document.getElementById("card");
@@ -217,6 +202,7 @@ function drawConfetti() {
 </body>
 </html>
 	
+
 
 
 
