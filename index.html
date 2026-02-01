@@ -95,7 +95,7 @@ const messages = [
 ];
 
 let index = 0;
-let clickCount = 0;
+
 function typeText(text, callback) {
   textEl.innerHTML = "";
   let i = 0;
@@ -110,20 +110,6 @@ function typeText(text, callback) {
 }
 
 
-// Function to spawn floating kiss hearts
-function addHearts() {
-  for(let i = 0; i < 10; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerText = "💋";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 30 + 20) + "px";
-    const duration = 4 + Math.random() * 3;
-    heart.style.animation = `float ${duration}s linear forwards, sway ${2 + Math.random()*2}s ease-in-out infinite alternate`;
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), duration * 1000);
-  }
-}
 	
 typeText(messages[0]);
 
@@ -231,6 +217,7 @@ function drawConfetti() {
 </body>
 </html>
 	
+
 
 
 
